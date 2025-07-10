@@ -1,0 +1,8 @@
+<div class="day-container">
+  <h2 class="date-header">{{ dayForecast().date }}</h2>
+  <div class="hourly-grid">
+    @for (hourly of dayForecast().hourly; track hourly.time) {
+      <hourly-forecast [forecast]="hourly" />
+    }
+  </div>
+</div>

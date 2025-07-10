@@ -1,0 +1,56 @@
+:host {
+  display: block;
+}
+
+.hourly-card {
+  /* --- Glassmorphism Effect --- */
+  background: rgba(42, 42, 42, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* For Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  border-radius: 12px;
+  padding: 0.75rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.hourly-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.15);
+}
+
+.time {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.weather-icon {
+  width: 40px;
+  height: 40px;
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.5));
+}
+
+.temperature {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.description {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+  min-height: 2em;
+}
+
+.wind {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}

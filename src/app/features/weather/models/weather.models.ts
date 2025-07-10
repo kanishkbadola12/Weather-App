@@ -52,7 +52,7 @@ export interface GeocodingApiResponse {
  * Represents 3-hour forecast entry within the main API response list.
  */
 export interface ApiForecastItem {
-  dt_txt: string;
+  dt: number; // Unix timestamp
   main: { temp: number; };
   weather: { description: string; icon: string; }[];
   wind: { speed: number; };

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 export interface SelectOption {
@@ -12,18 +12,18 @@ export interface SelectOption {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './select.component.html',
-  styleUrl: './select.component.css'
+  styleUrl: './select.component.css',
 })
-
 export class SelectComponent {
-  @Input() label: string = '';
-  @Input() options: SelectOption[] = [];
-  @Output() selectionChange = new EventEmitter<string>();
+  label = input<string>('');
+  options = input<SelectOption[]>([]);
+  selectedValue = input<string>('');
+  selectionChange = output<string>();
 
   /**
    * Handles the change event from the select element.
    * @param event The DOM event from the select element.
-  */
+   */
   onSelectionChange(event: Event): void {
     const selectedValue = (event.target as HTMLSelectElement).value;
     this.selectionChange.emit(selectedValue);

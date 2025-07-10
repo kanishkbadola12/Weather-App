@@ -1,0 +1,62 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+}
+
+.city-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.city-selector button {
+  background-color: var(--tertiary-dark);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-dark);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.city-selector button:hover {
+  background-color: var(--secondary-dark);
+  border-color: var(--accent-color);
+}
+
+.city-selector button.active {
+  background-color: var(--accent-color);
+  color: var(--background-dark);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  background-color: var(--primary-dark);
+  border-radius: 16px;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.error-container {
+  color: #ff6b6b;
+}
