@@ -1,0 +1,15 @@
+<label [for]="label">{{ label }}</label>
+
+<div class="select-wrapper">
+  <select 
+    [id]="label" 
+    class="control-select" 
+    (change)="onSelectionChange($event)">
+    
+    <option value="" disabled>Please choose an option</option>
+    
+    @for (option of options; track option.value) {
+      <option [value]="option.label">{{ option.value }}</option>
+    }
+  </select>
+</div>
