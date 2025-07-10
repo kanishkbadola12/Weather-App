@@ -3,7 +3,7 @@ import { SelectComponent, SelectOption } from "@app/shared/components/select/sel
 import { Store } from '@ngrx/store';
 import { citySelected } from './store/weather.actions';
 import { selectError, selectForecast, selectIsLoading, selectSelectedCityName } from './store/weather.selectors';
-import { DayForecastComponent } from '../components/day-forecast/day-forecast.component';
+import { DayForecastComponent } from './components/day-forecast/day-forecast.component';
 
 @Component({
   selector: 'weather-dashboard',

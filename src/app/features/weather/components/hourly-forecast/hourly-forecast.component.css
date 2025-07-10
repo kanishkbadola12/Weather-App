@@ -22,7 +22,7 @@
 
 .hourly-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.15);
 }
 
 .time {
