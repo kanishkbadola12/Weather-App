@@ -1,5 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, input, output } from '@angular/core';
+import {
+  Component,
+  input,
+  output
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 export interface SelectOption {
@@ -15,9 +19,9 @@ export interface SelectOption {
   styleUrl: './select.component.css',
 })
 export class SelectComponent {
-  label = input<string>('');
+  label = input<string | undefined>('');
   options = input<SelectOption[]>([]);
-  selectedValue = input<string>('');
+  selectedValue = input<string | null>(null);
   selectionChange = output<string>();
 
   /**

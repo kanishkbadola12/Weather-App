@@ -1,17 +1,16 @@
-<label [for]="label()">{{ label() }}</label>
+<label [for]="label() ? label() : 'nw-select'">{{ label() }}</label>
 
 <div class="select-wrapper">
   <select 
-    [id]="label()"
-    class="control-select"
+    [id]="label() ? label() : 'nw-select'"
     [ngModel]="selectedValue()"
     (change)="onSelectionChange($event)"
   >
-  
-    <option value="" disabled>Please choose an option</option>
+    <option value="null" disabled>Please choose an option</option>
     
     @for (option of options(); track option.value) {
-      <option [value]="option.label">{{ option.value }}</option>
+      <option [value]="option.value">{{ option.label }}</option>
     }
   </select>
+  <img class="custom-arrow" src="assets/icons/chevron-down.icon.svg" alt="">
 </div>

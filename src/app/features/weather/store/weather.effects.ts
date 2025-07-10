@@ -4,7 +4,8 @@ import { of } from 'rxjs';
 import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 import * as WeatherActions from '../store/weather.actions';
 import { WeatherService } from '@app/shared/services/weather.service';
-import { processForecastData } from '../weather.helpers';
+import { processForecastData } from '../../../shared/helpers/weather.helpers';
+import { getErrorMessage } from '@app/shared/helpers/error.helpers';
 
 @Injectable()
 export class WeatherEffects {
@@ -52,7 +53,7 @@ export class WeatherEffects {
             );
           }),
           catchError((error) =>
-            of(WeatherActions.loadForecastFailure({ error: error.message }))
+            of(WeatherActions.loadForecastFailure({ error: getErrorMessage(error) }))
           )
         )
       )

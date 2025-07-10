@@ -3,7 +3,7 @@
     <h1>5-Day Weather Forecast</h1>
     <nw-select
       [options]="cityOptions"
-      [selectedValue]="selectedCity() ?? ''"
+      [selectedValue]="selectedCity()"
       (selectionChange)="onCitySelected($event)"
     >
     </nw-select>
@@ -11,20 +11,19 @@
 
   <main class="content-area">
     @if (isLoading()) {
-      <div class="message-container">
-        <p class="loading-text">Fetching weather data...</p>
-      </div>
-    } @else if (error()) {
-      <div class="message-container error-container">
-        <p class="error-text">Error: {{ error() }}</p>
-      </div>
-    } @else if (forecast()?.length) { 
+      <nw-loader [city]="selectedCity()"></nw-loader>
+    } 
+    @else if (error()) {
+      <nw-error [message]="error() ?? 'An unknown error occurred'" />
+    } 
+    @else if (displayableDays().length > 0) { 
       <div class="forecast-list">
-        @for (day of forecast()!; track day.date) {
-          <day-forecast [dayForecast]="day" /> 
+        @for (day of displayableDays(); track day.date) {
+          <day-forecast [dayForecast]="day" />
         }
       </div>
-    } @else {
+    }
+    @else {
       <div class="message-container">
         <p>Please select a city to see the forecast.</p>
       </div>

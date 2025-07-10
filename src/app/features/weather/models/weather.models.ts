@@ -35,8 +35,6 @@ export interface DayForecast {
   hourly: HourlyForecast[];
 }
 
-// --- Raw API Response Models ---
-
 /**
  * Represents the structure of location object returned by the
  * OpenWeatherMap Geocoding API.

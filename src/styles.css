@@ -13,6 +13,10 @@
   
   --accent-color: #ffd700;
 
+  --error-color-strong: #ff4d4d;
+  --error-color-medium: #ff6b6b;
+  --error-color-text: #ffcbcb;
+
   --font-primary: 'Roboto', sans-serif;
 }
 

@@ -16,12 +16,12 @@ export const loadCoordinates = createAction(
 
 // Dispatched when the entire process succeeds
 export const loadForecastSuccess = createAction(
-  '[Weather API] Load Forecast Success',
+  weatherActionTypes.LOAD_FORECAST_SUCCESS,
   props<{ forecast: DayForecast[] }>()
 );
 
 // Dispatched when any part of the process fails
 export const loadForecastFailure = createAction(
-  '[Weather API] Load Forecast Failure',
+  weatherActionTypes.LOAD_FORECAST_FAILURE,
   props<{ error: string }>()
 );

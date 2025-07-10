@@ -1,4 +1,4 @@
-import { ForecastApiResponse, DayForecast, HourlyForecast } from "./models/weather.models";
+import { ForecastApiResponse, DayForecast, HourlyForecast } from "../../features/weather/models/weather.models";
 
 /**
  * Formats a Date object into a full weekday and date string.
