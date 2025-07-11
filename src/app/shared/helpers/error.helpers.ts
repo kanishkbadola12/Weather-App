@@ -4,7 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
  * Transforms a caught error object into a user-friendly string.
  * It inspects the error type and URL to provide specific feedback.
  */
-export const getErrorMessage = (error: any): string => {
+function getErrorMessage(error: any): string {
   if (error instanceof Error && !(error instanceof HttpErrorResponse)) {
     return error.message;
   }
@@ -31,4 +31,8 @@ export const getErrorMessage = (error: any): string => {
   }
 
   return 'An unexpected error occurred. Please try again.';
+};
+
+export const errorHelper = {
+  getErrorMessage
 };

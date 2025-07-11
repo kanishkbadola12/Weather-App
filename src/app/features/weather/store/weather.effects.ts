@@ -4,8 +4,8 @@ import { of } from 'rxjs';
 import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 import * as WeatherActions from '../store/weather.actions';
 import { WeatherService } from '@app/shared/services/weather.service';
-import { processForecastData } from '../../../shared/helpers/weather.helpers';
-import { getErrorMessage } from '@app/shared/helpers/error.helpers';
+import { weatherHelpers } from '@app/shared/helpers/weather.helpers';
+import { errorHelper } from '@app/shared/helpers/error.helpers';
 
 @Injectable()
 export class WeatherEffects {
@@ -14,7 +14,7 @@ export class WeatherEffects {
 
   /**
    * Listens for `citySelected` and dispatches `loadCoordinates`.
-  */
+   */
   triggerCoordinateLoad$ = createEffect(() =>
     this.actions$.pipe(
       ofType(WeatherActions.citySelected),
@@ -39,25 +39,30 @@ export class WeatherEffects {
         this.weatherService.getCoordinatesForCity(action.cityName).pipe(
           switchMap((geoResponse) => {
             if (!geoResponse || geoResponse.length === 0) {
-              throw new Error(`Coordinates not found for city: ${action.cityName}`);
+              throw new Error(
+                `Coordinates not found for city: ${action.cityName}`
+              );
             }
-  
+
             const { lat, lon } = geoResponse[0];
-            console.log(`Coordinates for ${action.cityName}:`, { lat, lon });
-  
+
             return this.weatherService.get5DayForecast({ lat, lon }).pipe(
               map((forecastResponse) => {
-                const forecast = processForecastData(forecastResponse);
+                const forecast =
+                  weatherHelpers.processForecastData(forecastResponse);
                 return WeatherActions.loadForecastSuccess({ forecast });
               })
             );
           }),
           catchError((error) =>
-            of(WeatherActions.loadForecastFailure({ error: getErrorMessage(error) }))
+            of(
+              WeatherActions.loadForecastFailure({
+                error: errorHelper.getErrorMessage(error),
+              })
+            )
           )
         )
       )
     )
   );
 }
-

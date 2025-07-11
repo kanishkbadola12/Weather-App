@@ -20,7 +20,8 @@ export interface SelectOption {
 })
 export class SelectComponent {
   label = input<string | undefined>('');
-  options = input<SelectOption[]>([]);
+  placeholder = input.required<string | undefined>();
+  options = input.required<SelectOption[]>();
   selectedValue = input<string | null>(null);
   selectionChange = output<string>();
 

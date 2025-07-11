@@ -6,7 +6,7 @@
     [ngModel]="selectedValue()"
     (change)="onSelectionChange($event)"
   >
-    <option value="null" disabled>Please choose an option</option>
+    <option value="null" disabled>{{ placeholder() }}</option>
     
     @for (option of options(); track option.value) {
       <option [value]="option.value">{{ option.label }}</option>

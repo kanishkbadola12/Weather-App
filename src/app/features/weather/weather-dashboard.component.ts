@@ -37,12 +37,6 @@ export class WeatherDashboardComponent {
     () => this.forecast()?.filter((day) => day.hourly?.length > 0) ?? []
   );
 
-  constructor() {
-    effect(() => {
-      console.log('Displayable Days:', this.displayableDays());
-    });
-  }
-
   public cityOptions: SelectOption[] = [
     { value: 'Birmingham', label: 'Birmingham' },
     { value: 'London', label: 'London' },

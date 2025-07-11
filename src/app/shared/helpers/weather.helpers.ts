@@ -4,7 +4,7 @@ import { ForecastApiResponse, DayForecast, HourlyForecast } from "../../features
  * Formats a Date object into a full weekday and date string.
  * @example "Thursday, July 10, 2025"
  */
-const formatDate = (date: Date): string => {
+function formatDate (date: Date): string {
   return date.toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',
@@ -18,7 +18,7 @@ const formatDate = (date: Date): string => {
  * Formats a Date object into a simple time string.
  * @example "03:00 PM"
  */
-const formatTime = (date: Date): string => {
+function formatTime(date: Date): string{
   return date.toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
@@ -32,7 +32,7 @@ Takes the raw forecast API response and transforms it into a structured format
 @param data The raw ForecastApiResponse.
 @returns An array of DayForecast objects, with each object containing the date
 */
-export const processForecastData = (forecastResponse: ForecastApiResponse): DayForecast[] => {
+function processForecastData (forecastResponse: ForecastApiResponse): DayForecast[] {
   const forecastsByDay: Record<string, HourlyForecast[]> = {};
   const { list } = forecastResponse;
   
@@ -62,4 +62,10 @@ export const processForecastData = (forecastResponse: ForecastApiResponse): DayF
   }));
 
   return forecast.slice(0, 5);
+};
+
+export const weatherHelpers = {
+  processForecastData,
+  formatDate,
+  formatTime
 };
