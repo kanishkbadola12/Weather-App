@@ -14,6 +14,7 @@ import {
 import { DayForecastComponent } from './components/day-forecast/day-forecast.component';
 import { LoaderComponent } from '@app/shared/components/loader/loader.component';
 import { ErrorComponent } from '@app/shared/components/error/error.component';
+import { MessageContainerComponent } from "./components/message-container/message-container.component";
 
 @Component({
   selector: 'weather-dashboard',
@@ -23,7 +24,8 @@ import { ErrorComponent } from '@app/shared/components/error/error.component';
     DayForecastComponent,
     LoaderComponent,
     ErrorComponent,
-  ],
+    MessageContainerComponent
+],
   templateUrl: './weather-dashboard.component.html',
   styleUrl: './weather-dashboard.component.css',
 })

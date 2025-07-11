@@ -1,7 +1,8 @@
 <label [for]="label() ? label() : 'nw-select'">{{ label() }}</label>
 
 <div class="select-wrapper">
-  <select 
+  <select
+    class="glass-effect"
     [id]="label() ? label() : 'nw-select'"
     [ngModel]="selectedValue()"
     (change)="onSelectionChange($event)"

@@ -2,7 +2,7 @@
   <header class="dashboard-header">
     <h1>5-Day Weather Forecast</h1>
     <nw-select
-      [placeholder]="'Please choose a city'"
+      [placeholder]="'Choose a destination'"
       [options]="cityOptions"
       [selectedValue]="selectedCity()"
       (selectionChange)="onCitySelected($event)"
@@ -25,9 +25,10 @@
       </div>
     }
     @else {
-      <div class="message-container">
-        <p>Please select a city to see the forecast.</p>
-      </div>
+      <message-container 
+        [subtitle]="'Traveling between cities? Know what to pack with our forecast.'"
+        [prompt]="'Choose a destination to get started.'"
+      />
     }
   </main>
 </div>
