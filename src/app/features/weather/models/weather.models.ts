@@ -51,9 +51,9 @@ export interface GeocodingApiResponse {
  */
 export interface ApiForecastItem {
   dt: number; // Unix timestamp
-  main: { temp: number; };
-  weather: { description: string; icon: string; }[];
-  wind: { speed: number; };
+  main: { temp: number };
+  weather: { description: string; icon: string }[];
+  wind: { speed: number };
 }
 
 /**

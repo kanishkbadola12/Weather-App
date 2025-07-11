@@ -15,6 +15,7 @@
 }
 
 .initial-view .initial-greeting {
+  letter-spacing: 0.5px;
   font-size: 2rem;
   font-weight: 700;
   color: var(--accent-color);
