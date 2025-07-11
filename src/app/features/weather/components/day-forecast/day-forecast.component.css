@@ -6,9 +6,9 @@
 .day-container {
   display: flex;
   flex-direction: column;
-  min-height: 17rem;
+  min-height: 16rem;
   border-radius: 16px;
-  padding: 1rem 1rem 0 1rem;
+  padding: 1.2rem 1rem 0 1rem;
   animation: fadeInUp 0.5s ease-out forwards;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .hourly-container::-webkit-scrollbar {
-  height: 5x;
+  height: 5px;
 }
 
 .hourly-container::-webkit-scrollbar-track {
@@ -44,6 +44,12 @@
 .hourly-container::-webkit-scrollbar-thumb {
   background: var(--tertiary-dark);
   border-radius: 3px;
+}
+
+@media (min-width: 768px) {
+  .day-container {
+    min-height: 17rem;
+  }
 }
 
 @keyframes fadeInUp {

@@ -26,6 +26,7 @@
   color: var(--text-secondary);
   letter-spacing: 0.5px;
   margin: 0;
+  text-align: center;
 }
 
 .loading-text span {

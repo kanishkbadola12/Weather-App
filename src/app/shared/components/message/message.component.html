@@ -1,0 +1,14 @@
+<div class="message-container glass-effect" [ngClass]="variant()">
+  @if (iconUrl()) {
+    <img class="message-icon" [src]="iconUrl()" alt="" />
+  }
+
+  <h2 class="message-title">{{ title() }}</h2>
+
+  @if (message()) {
+    <p class="message-subtitle">{{ message() }}</p>
+  }
+  @if (prompt()) {
+    <p class="message-prompt">{{ prompt() }}</p>
+  }
+</div>

@@ -13,8 +13,7 @@ import {
 } from './store/weather.selectors';
 import { DayForecastComponent } from './components/day-forecast/day-forecast.component';
 import { LoaderComponent } from '@app/shared/components/loader/loader.component';
-import { ErrorComponent } from '@app/shared/components/error/error.component';
-import { MessageContainerComponent } from "./components/message-container/message-container.component";
+import { MessageComponent } from "@app/shared/components/message/message.component";
 
 @Component({
   selector: 'weather-dashboard',
@@ -23,9 +22,8 @@ import { MessageContainerComponent } from "./components/message-container/messag
     SelectComponent,
     DayForecastComponent,
     LoaderComponent,
-    ErrorComponent,
-    MessageContainerComponent
-],
+    MessageComponent
+  ],
   templateUrl: './weather-dashboard.component.html',
   styleUrl: './weather-dashboard.component.css',
 })
@@ -44,6 +42,14 @@ export class WeatherDashboardComponent {
     { value: 'London', label: 'London' },
     { value: 'Cardiff', label: 'Cardiff' },
   ];
+
+  get greeting(): string {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good Morning';
+    if (hour < 18) return 'Good Afternoon';
+
+    return 'Good Evening';
+  }
 
   /**
    * Handles the selection of a city from the dropdown.

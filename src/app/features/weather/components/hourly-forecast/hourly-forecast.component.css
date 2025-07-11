@@ -15,7 +15,7 @@
 }
 
 .hourly-card:hover {
-  transform: translateY(5px);
+  transform: translateY(4px);
   box-shadow: 0 4px 8px rgba(255, 215, 0, 0.15);
 }
 

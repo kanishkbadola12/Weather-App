@@ -3,7 +3,6 @@ import { By } from '@angular/platform-browser';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { WeatherDashboardComponent } from './weather-dashboard.component';
 import { LoaderComponent } from '@app/shared/components/loader/loader.component';
-import { ErrorComponent } from '@app/shared/components/error/error.component';
 import { DayForecastComponent } from './components/day-forecast/day-forecast.component';
 import { SelectComponent } from '@app/shared/components/select/select.component';
 import {
@@ -14,6 +13,7 @@ import {
 } from './store/weather.selectors';
 import { DayForecast } from './models/weather.models';
 import { citySelected } from './store/weather.actions';
+import { MessageComponent } from '@app/shared/components/message/message.component';
 
 describe('WeatherDashboardComponent', () => {
   let component: WeatherDashboardComponent;
@@ -49,7 +49,7 @@ describe('WeatherDashboardComponent', () => {
         WeatherDashboardComponent,
         SelectComponent,
         LoaderComponent,
-        ErrorComponent,
+        MessageComponent,
         DayForecastComponent,
       ],
       providers: [
@@ -83,18 +83,18 @@ describe('WeatherDashboardComponent', () => {
     expect(h1Element?.textContent).toContain('5-Day Weather Forecast');
   });
 
-  it('should display the initial "Please select a city" message', () => {
+  it('should display the initial "Traveling between cities? Know what to pack with our forecast." message', () => {
     fixture.detectChanges();
     const messageElement = fixture.nativeElement.querySelector(
       '.message-container p'
     );
 
-    expect(messageElement.textContent).toContain('Please select a city');
+    expect(messageElement.textContent).toContain('Traveling between cities? Know what to pack with our forecast.');
 
     expect(
       fixture.debugElement.query(By.directive(LoaderComponent))
     ).toBeNull();
-    expect(fixture.debugElement.query(By.directive(ErrorComponent))).toBeNull();
+    expect(fixture.debugElement.query(By.directive(MessageComponent))).toBeNull();
     expect(
       fixture.debugElement.query(By.directive(DayForecastComponent))
     ).toBeNull();
@@ -116,7 +116,7 @@ describe('WeatherDashboardComponent', () => {
     fixture.detectChanges();
 
     const errorComponent = fixture.debugElement.query(
-      By.directive(ErrorComponent)
+      By.directive(MessageComponent)
     );
 
     expect(errorComponent).not.toBeNull();

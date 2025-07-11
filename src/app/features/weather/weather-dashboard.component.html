@@ -1,21 +1,33 @@
 <div class="dashboard-container">
   <header class="dashboard-header">
     <h1>5-Day Weather Forecast</h1>
-    <nw-select
-      [placeholder]="'Choose a destination'"
-      [options]="cityOptions"
-      [selectedValue]="selectedCity()"
-      (selectionChange)="onCitySelected($event)"
-    >
-    </nw-select>
+    <div class="header-controls">
+      <nw-select
+        [placeholder]="'Choose a destination'"
+        [options]="cityOptions"
+        [selectedValue]="selectedCity()"
+        (selectionChange)="onCitySelected($event)"
+      >
+      </nw-select>
+      @if (displayableDays().length > 0 && selectedCity()) {
+        <h2 class="current-city-header">
+          Weather forecast for <span>{{ selectedCity() }}</span>
+        </h2>
+      }
+    </div>
   </header>
 
   <main class="content-area">
     @if (isLoading()) {
       <nw-loader [city]="selectedCity()"></nw-loader>
-    } 
+    }
     @else if (error()) {
-      <nw-error [message]="error() ?? 'An unknown error occurred'" />
+      <nw-message
+        variant="error"
+        title="An Error Occurred"
+        [message]="error() ?? 'An unknown error occurred'"
+        iconUrl="assets/icons/error-icon.svg"
+      />
     } 
     @else if (displayableDays().length > 0) { 
       <div class="forecast-list">
@@ -25,9 +37,11 @@
       </div>
     }
     @else {
-      <message-container 
-        [subtitle]="'Traveling between cities? Know what to pack with our forecast.'"
-        [prompt]="'Choose a destination to get started.'"
+      <nw-message
+        variant="info"
+        [title]="greeting"
+        message="Traveling between cities? Know what to pack with our forecast."
+        prompt="Choose a destination to get started."
       />
     }
   </main>
