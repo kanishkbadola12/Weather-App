@@ -1,17 +1,17 @@
 <div class="hourly-card glass-effect">
-  <div class="time">{{ forecast().time }}</div>
+  <div class="time">{{ hourlyForecast().time }}</div>
   <img
     class="weather-icon"
-    [src]="forecast().icon"
-    [alt]="forecast().description"
+    [src]="hourlyForecast().icon"
+    [alt]="hourlyForecast().description"
   />
   <div class="temperature">
-    <span>{{ forecast().temperature }}</span>
+    <span>{{ hourlyForecast().temperature }}</span>
     <span class="unit">°C</span>
   </div>
-  <div class="description">{{ forecast().description }}</div>
+  <div class="description">{{ hourlyForecast().description }}</div>
   <div class="wind">
     <span class="wind-label">Wind: </span>
-    <span class="wind-value">{{ forecast().windSpeed }} km/h</span>
+    <span class="wind-value">{{ hourlyForecast().windSpeed }} km/h</span>
   </div>
 </div>

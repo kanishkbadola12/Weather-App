@@ -4,7 +4,7 @@
   padding: 2rem;
 }
 
-.forecast-list {
+.forecast-grid {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 1fr;
@@ -47,7 +47,7 @@ h1 {
 }
 
 @media (min-width: 768px) {
-  .forecast-list {
+  .forecast-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 

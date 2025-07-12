@@ -2,9 +2,8 @@
   @if (iconUrl()) {
     <img class="message-icon" [src]="iconUrl()" alt="" />
   }
-
   <h2 class="message-title">{{ title() }}</h2>
-
+  
   @if (message()) {
     <p class="message-subtitle">{{ message() }}</p>
   }

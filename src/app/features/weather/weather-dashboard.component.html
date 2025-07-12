@@ -1,14 +1,19 @@
 <div class="dashboard-container">
   <header class="dashboard-header">
     <h1>5-Day Weather Forecast</h1>
+    <!-- This container manages the layout of the primary user controls. -->
     <div class="header-controls">
+      <!-- The reusable select component for city selection. -->
       <nw-select
-        [placeholder]="'Choose a destination'"
         [options]="cityOptions"
         [selectedValue]="selectedCity()"
         (selectionChange)="onCitySelected($event)"
       >
       </nw-select>
+      <!-- 
+        This header is conditionally displayed only after a city has been
+        selected and a valid forecast is available.
+      -->
       @if (displayableDays().length > 0 && selectedCity()) {
         <h2 class="current-city-header">
           Weather forecast for <span>{{ selectedCity() }}</span>
@@ -17,11 +22,13 @@
     </div>
   </header>
 
-  <main class="content-area">
+  <main>
     @if (isLoading()) {
+      <!-- Shows the loader while fetching data. -->
       <nw-loader [city]="selectedCity()"></nw-loader>
     }
     @else if (error()) {
+      <!-- Shows the error message if any part of the data fetching fails. -->
       <nw-message
         variant="error"
         title="An Error Occurred"
@@ -30,13 +37,15 @@
       />
     } 
     @else if (displayableDays().length > 0) { 
-      <div class="forecast-list">
+      <!-- Renders the list of daily forecasts when data is successfully fetched. -->
+      <div class="forecast-grid">
         @for (day of displayableDays(); track day.date) {
           <day-forecast [dayForecast]="day" />
         }
       </div>
     }
     @else {
+      <!-- Shows the initial welcome message before a city is selected. -->
       <nw-message
         variant="info"
         [title]="greeting"

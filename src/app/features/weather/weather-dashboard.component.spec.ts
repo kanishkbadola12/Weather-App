@@ -88,13 +88,14 @@ describe('WeatherDashboardComponent', () => {
     const messageElement = fixture.nativeElement.querySelector(
       '.message-container p'
     );
-
-    expect(messageElement.textContent).toContain('Traveling between cities? Know what to pack with our forecast.');
+    
+    expect(messageElement.textContent).toContain(
+      'Traveling between cities? Know what to pack with our forecast.'
+    );
 
     expect(
       fixture.debugElement.query(By.directive(LoaderComponent))
     ).toBeNull();
-    expect(fixture.debugElement.query(By.directive(MessageComponent))).toBeNull();
     expect(
       fixture.debugElement.query(By.directive(DayForecastComponent))
     ).toBeNull();
@@ -134,7 +135,7 @@ describe('WeatherDashboardComponent', () => {
 
     expect(dayForecasts.length).toBe(1);
     expect(
-      fixture.nativeElement.querySelector('.forecast-list')
+      fixture.nativeElement.querySelector('.forecast-grid')
     ).not.toBeNull();
   });
 

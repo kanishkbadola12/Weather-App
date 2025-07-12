@@ -6,15 +6,15 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './message.component.html',
-  styleUrl: './message.component.css'
+  styleUrl: './message.component.css',
 })
 export class MessageComponent {
   /**
-   * Controls the visual style. 'info' for standard messages, 
+   * Controls the visual style. 'info' for standard messages,
    * 'error' for error messages. Defaults to 'info'.
    */
   variant = input<'info' | 'error'>('info');
-  
+
   /** (Optional) The URL for an icon to display at the top. */
   iconUrl = input<string>();
 

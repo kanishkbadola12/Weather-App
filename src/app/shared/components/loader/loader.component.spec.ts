@@ -28,7 +28,9 @@ describe('LoaderComponent', () => {
     fixture.detectChanges();
 
     const loadingText = compiled.querySelector('.loading-text');
-    expect(loadingText?.textContent).toContain(`Loading Weather Forecast For ${testCity}`);
+    expect(loadingText?.textContent).toContain(
+      `Loading Weather Forecast For ${testCity}`
+    );
   });
 
   it('should display the loading text without a city name when input is null', () => {

@@ -7,19 +7,10 @@
   display: flex;
   flex-direction: column;
   min-height: 16rem;
+  background-color: var(--background-dark);
   border-radius: 16px;
   padding: 1.2rem 1rem 0 1rem;
   animation: fadeInUp 0.5s ease-out forwards;
-}
-
-.hourly-container {
-  display: flex;
-  gap: 0.75rem;
-  padding-bottom: 1.25rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-dull) var(--background-dark);
 }
 
 .date-header {
@@ -32,18 +23,23 @@
   padding-left: 1rem;
 }
 
-.hourly-container::-webkit-scrollbar {
-  height: 5px;
+.hourly-container {
+  display: flex;
+  gap: 0.75rem;
+  padding-bottom: 1.25rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
-.hourly-container::-webkit-scrollbar-track {
-  background: var(--tertiary-dark);
-  border-radius: 3px;
+/* Styling for WebKit browsers (Chrome, Safari, Edge) */
+.hourly-container::-webkit-scrollbar {
+  height: 6px;
+  background-color: var(--background-dark);
 }
 
 .hourly-container::-webkit-scrollbar-thumb {
-  background: var(--tertiary-dark);
   border-radius: 3px;
+  background: var(--accent-dull);
 }
 
 @media (min-width: 768px) {

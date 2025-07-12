@@ -1,9 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  input,
-  output
-} from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 export interface SelectOption {
@@ -20,7 +16,6 @@ export interface SelectOption {
 })
 export class SelectComponent {
   label = input<string | undefined>('');
-  placeholder = input.required<string | undefined>();
   options = input.required<SelectOption[]>();
   selectedValue = input<string | null>(null);
   selectionChange = output<string>();

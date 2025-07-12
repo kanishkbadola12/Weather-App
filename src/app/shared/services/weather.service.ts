@@ -14,7 +14,8 @@ import { environment } from '@env/environment';
 export class WeatherService {
   private http = inject(HttpClient);
   private readonly geoApiUrl = 'https://api.openweathermap.org/geo/1.0/direct';
-  private readonly forecastApiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
+  private readonly forecastApiUrl =
+    'https://api.openweathermap.org/data/2.5/forecast';
 
   /**
    * Fetches data from the Geocoding API and returns the raw response.

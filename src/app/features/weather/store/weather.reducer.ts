@@ -3,6 +3,7 @@ import {
   citySelected,
   loadForecastFailure,
   loadForecastSuccess,
+  weatherReset,
 } from './weather.actions';
 import { WeatherState } from '../models/weather.models';
 
@@ -37,6 +38,8 @@ export const weatherFeature = createFeature({
       forecast: null,
       isLoading: false,
       error,
-    }))
+    })),
+    
+    on(weatherReset, () => initialWeatherState)
   ),
 });

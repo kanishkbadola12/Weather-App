@@ -136,9 +136,13 @@ describe('WeatherEffects', () => {
     it('should dispatch loadForecastFailure if get5DayForecast fails', (done: DoneFn) => {
       const error = new HttpErrorResponse({ status: 404 });
       actions$ = of(WeatherActions.loadCoordinates({ cityName: mockCity }));
+      
+      //Simulate coordinates found
       mockWeatherService.getCoordinatesForCity.and.returnValue(
         of(mockGeoResponse)
       );
+
+      //Simulate 5 day weather forecast
       mockWeatherService.get5DayForecast.and.returnValue(
         throwError(() => error)
       );

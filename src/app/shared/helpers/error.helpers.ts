@@ -8,7 +8,7 @@ function getErrorMessage(error: any): string {
   if (error instanceof Error && !(error instanceof HttpErrorResponse)) {
     return error.message;
   }
-  
+
   if (error instanceof HttpErrorResponse) {
     let errorSource = 'An API error occurred';
 
@@ -26,13 +26,13 @@ function getErrorMessage(error: any): string {
     } else if (error.status === 404) {
       failureReason = 'because the service could not be found.';
     }
-    
+
     return `${errorSource}${failureReason}`;
   }
 
   return 'An unexpected error occurred. Please try again.';
-};
+}
 
 export const errorHelper = {
-  getErrorMessage
+  getErrorMessage,
 };

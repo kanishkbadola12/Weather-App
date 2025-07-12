@@ -55,8 +55,10 @@ describe('HourlyForecastComponent', () => {
   });
 
   it('should set the image src and alt attributes correctly', () => {
-    const imgElement = compiled.querySelector('.weather-icon') as HTMLImageElement;
-    
+    const imgElement = compiled.querySelector(
+      '.weather-icon'
+    ) as HTMLImageElement;
+
     expect(imgElement.src).toContain('icon-url.png');
     expect(imgElement.alt).toBe('scattered clouds');
   });

@@ -19,7 +19,6 @@ describe('SelectComponent', () => {
     component = fixture.componentInstance;
 
     fixture.componentRef.setInput('options', mockOptions);
-    fixture.componentRef.setInput('placeholder', 'Please choose a city');
 
     fixture.detectChanges();
   });
@@ -30,6 +29,6 @@ describe('SelectComponent', () => {
 
   it('should render the correct number of options', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelectorAll('option').length).toBe(3);
+    expect(compiled.querySelectorAll('option').length).toBe(2);
   });
 });
