@@ -22,15 +22,14 @@ export const weatherFeature = createFeature({
     on(citySelected, (state, { cityName }) => ({
       ...state,
       selectedCityName: cityName,
-      forecast: null,
       isLoading: true,
-      error: null,
     })),
 
     on(loadForecastSuccess, (state, { forecast }) => ({
       ...state,
       forecast,
       isLoading: false,
+      error: null
     })),
 
     on(loadForecastFailure, (state, { error }) => ({

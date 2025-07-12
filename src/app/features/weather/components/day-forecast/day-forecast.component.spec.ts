@@ -73,6 +73,6 @@ describe('DayForecastComponent', () => {
       By.directive(HourlyForecastComponent)
     ).componentInstance as HourlyForecastComponent;
 
-    expect(hourlyComponent.forecast()).toEqual(mockDayForecast.hourly[0]);
+    expect(hourlyComponent.hourlyForecast()).toEqual(mockDayForecast.hourly[0]);
   });
 });

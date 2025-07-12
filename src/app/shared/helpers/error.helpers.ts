@@ -1,38 +1,31 @@
 import { HttpErrorResponse } from '@angular/common/http';
 
 /**
- * Transforms a caught error object into a user-friendly string.
- * It inspects the error type and URL to provide specific feedback.
+ * Inspects a caught error object and translates it into a simple,
+ * user-friendly string that explains the reason for the failure,
+ * @param error The error object caught in a catchError block.
+ * @returns A human-readable string explaining the failure.
  */
-function getErrorMessage(error: any): string {
+function getFailureReason(error: any): string {
   if (error instanceof Error && !(error instanceof HttpErrorResponse)) {
     return error.message;
   }
-
+  
   if (error instanceof HttpErrorResponse) {
-    let errorSource = 'An API error occurred';
-
-    if (error.url?.includes('/geo/1.0/direct')) {
-      errorSource = 'Unable to fetch coordinates for the selected city';
-    } else if (error.url?.includes('/data/2.5/forecast')) {
-      errorSource = 'Unable to get weather information for the selected city';
-    }
-
-    let failureReason = 'please try again later.';
     if (error.status === 0) {
-      failureReason = '. Please check your internet connection.';
-    } else if (error.status === 401) {
-      failureReason = 'due to an application configuration issue.';
-    } else if (error.status === 404) {
-      failureReason = 'because the service could not be found.';
+      return 'Please check your internet connection.';
     }
-
-    return `${errorSource}${failureReason}`;
+    if (error.status === 401) {
+      return 'There was a configuration problem.';
+    }
+    if (error.status === 404) {
+      return 'The requested service could not be found.';
+    }
   }
 
-  return 'An unexpected error occurred. Please try again.';
+  return 'An unexpected error occurred.';
 }
 
 export const errorHelper = {
-  getErrorMessage,
+  getFailureReason,
 };

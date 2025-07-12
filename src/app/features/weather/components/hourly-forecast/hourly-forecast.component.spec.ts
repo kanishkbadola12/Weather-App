@@ -28,7 +28,7 @@ describe('HourlyForecastComponent', () => {
     fixture = TestBed.createComponent(HourlyForecastComponent);
     component = fixture.componentInstance;
 
-    fixture.componentRef.setInput('forecast', mockForecast);
+    fixture.componentRef.setInput('hourlyForecast', mockForecast);
 
     fixture.detectChanges();
     compiled = fixture.nativeElement;

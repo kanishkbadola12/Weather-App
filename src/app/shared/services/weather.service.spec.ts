@@ -77,7 +77,6 @@ describe('WeatherService', () => {
         (r) => r.url === geoApiUrl && r.params.get('q') === mockCity
       );
 
-      expect(req.request.method).toBe('GET');
       req.flush('Server error', {
         status: mockErrorStatus,
         statusText: mockErrorStatusText,

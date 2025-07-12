@@ -30,19 +30,19 @@ import { MessageComponent } from '@app/shared/components/message/message.compone
 export class WeatherDashboardComponent {
   private store = inject(Store);
 
-  /** True while fetching forecast data; used to show a loading indicator. */
+  /** Indicates whether forecast data is currently being loaded. */
   isLoading = this.store.selectSignal(selectIsLoading);
 
-  /** Holds the error message string if a data-fetching process fails. */
+  /** Error message from the forecast data fetch, if any. */
   error = this.store.selectSignal(selectError);
 
   /** The complete, structured forecast data from the NgRx store. */
   forecast = this.store.selectSignal(selectForecast);
 
-  /** The name of the currently selected city, or '' if none is selected. */
+  /** Name of the currently selected city (empty string if none). */
   selectedCity = this.store.selectSignal(selectSelectedCityName);
 
-  /* A derived list of forecast days that contain valid hourly data to render. */
+  /** Filtered forecast days with at least one hourly entry. */
   displayableDays = computed(
     () => this.forecast()?.filter((day) => day.hourly?.length > 0) ?? []
   );

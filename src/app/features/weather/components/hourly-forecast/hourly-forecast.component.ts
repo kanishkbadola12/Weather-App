@@ -12,7 +12,7 @@ import { HourlyForecast } from '@app/features/weather/models/weather.models';
 export class HourlyForecastComponent {
   /**
    * (Required) The detailed weather data for a single 3-hour time slot,
-   * including time, temperature, description, and icon URL.
+   * including time, temperature, description, wind speed and icon URL.
   */
   hourlyForecast = input.required<HourlyForecast>();
 }

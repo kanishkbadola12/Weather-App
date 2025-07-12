@@ -47,7 +47,8 @@ export interface GeocodingApiResponse {
 }
 
 /**
- * Represents 3-hour forecast entry within the main API response list.
+ * Represents the structure of a list item returned by the
+ * OpenWeatherMap Forecast API.
  */
 export interface ApiForecastItem {
   dt: number; // Unix timestamp

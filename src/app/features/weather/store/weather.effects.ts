@@ -48,18 +48,21 @@ export class WeatherEffects {
 
             return this.weatherService.get5DayForecast({ lat, lon }).pipe(
               map((forecastResponse) => {
-                const forecast =
-                  weatherHelpers.processForecastData(forecastResponse);
+                const forecast = weatherHelpers.processForecastData(forecastResponse);
+
                 return WeatherActions.loadForecastSuccess({ forecast });
-              })
+              }),
+              catchError((forecastError) => 
+                of(WeatherActions.loadForecastFailure({ 
+                  error: `Unable to get weather info. ${errorHelper.getFailureReason(forecastError)}`
+                }))
+              )
             );
           }),
-          catchError((error) =>
-            of(
-              WeatherActions.loadForecastFailure({
-                error: errorHelper.getErrorMessage(error),
-              })
-            )
+          catchError((geoError) => 
+            of(WeatherActions.loadForecastFailure({ 
+              error: `Unable to find location. ${errorHelper.getFailureReason(geoError)}`
+            }))
           )
         )
       )

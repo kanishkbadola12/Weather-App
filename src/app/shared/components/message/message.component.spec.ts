@@ -31,8 +31,8 @@ describe('MessageComponent', () => {
     fixture.componentRef.setInput('title', testTitle);
     fixture.detectChanges();
 
-    const titleEl = compiled.querySelector('.message-title');
-    expect(titleEl?.textContent).toBe(testTitle);
+    const titleElement = compiled.querySelector('.message-title');
+    expect(titleElement?.textContent).toBe(testTitle);
   });
 
   describe('Variant and styling', () => {
@@ -87,16 +87,17 @@ describe('MessageComponent', () => {
     it('should display the message and prompt when they are provided', () => {
       const testMessage = 'This is a test message.';
       const testPrompt = 'This is a test prompt.';
+
       fixture.componentRef.setInput('title', 'Full Message');
       fixture.componentRef.setInput('message', testMessage);
       fixture.componentRef.setInput('prompt', testPrompt);
       fixture.detectChanges();
 
-      const messageEl = compiled.querySelector('.message-subtitle');
-      const promptEl = compiled.querySelector('.message-prompt');
+      const messageElement = compiled.querySelector('.message-subtitle');
+      const promptElement = compiled.querySelector('.message-prompt');
 
-      expect(messageEl?.textContent).toBe(testMessage);
-      expect(promptEl?.textContent).toBe(testPrompt);
+      expect(messageElement?.textContent).toBe(testMessage);
+      expect(promptElement?.textContent).toBe(testPrompt);
     });
   });
 });

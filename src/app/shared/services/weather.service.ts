@@ -36,12 +36,13 @@ export class WeatherService {
    * @param coordinates The latitude and longitude for the forecast.
    * @returns An Observable of the raw API response.
    */
-  get5DayForecast(
-    coordinates: GeoCoordinates
-  ): Observable<ForecastApiResponse> {
+  get5DayForecast({
+    lat,
+    lon,
+  }: GeoCoordinates): Observable<ForecastApiResponse> {
     const params = new HttpParams()
-      .set('lat', coordinates.lat.toString())
-      .set('lon', coordinates.lon.toString())
+      .set('lat', lat.toString())
+      .set('lon', lon.toString())
       .set('units', 'metric')
       .set('appid', environment.openWeatherApiKey);
 

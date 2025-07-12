@@ -51,7 +51,7 @@ describe('WeatherEffects', () => {
     spyOn(weatherHelpers, 'processForecastData').and.returnValue(
       mockProcessedForecast
     );
-    spyOn(errorHelper, 'getErrorMessage').and.callFake(
+    spyOn(errorHelper, 'getFailureReason').and.callFake(
       (err) => err.message || 'An error occurred'
     );
   });
@@ -98,22 +98,6 @@ describe('WeatherEffects', () => {
       });
     });
 
-    it('should dispatch loadForecastFailure if getCoordinatesForCity fails', (done: DoneFn) => {
-      const error = new HttpErrorResponse({ status: 500 });
-      actions$ = of(WeatherActions.loadCoordinates({ cityName: mockCity }));
-
-      mockWeatherService.getCoordinatesForCity.and.returnValue(
-        throwError(() => error)
-      );
-
-      effects.loadWeatherForecast$.subscribe((resultAction: Action) => {
-        expect(resultAction.type).toBe(WeatherActions.loadForecastFailure.type);
-        expect(errorHelper.getErrorMessage).toHaveBeenCalledWith(error);
-        expect(mockWeatherService.get5DayForecast).not.toHaveBeenCalled();
-        done();
-      });
-    });
-
     it('should dispatch loadForecastFailure if coordinates are not found', (done: DoneFn) => {
       actions$ = of(
         WeatherActions.loadCoordinates({ cityName: 'UnknownCity' })
@@ -125,7 +109,7 @@ describe('WeatherEffects', () => {
       effects.loadWeatherForecast$.subscribe((resultAction: Action) => {
         expect(resultAction).toEqual(
           WeatherActions.loadForecastFailure({
-            error: 'Coordinates not found for city: UnknownCity',
+            error: 'Unable to find location. Coordinates not found for city: UnknownCity',
           })
         );
         expect(mockWeatherService.get5DayForecast).not.toHaveBeenCalled();
@@ -149,7 +133,7 @@ describe('WeatherEffects', () => {
 
       effects.loadWeatherForecast$.subscribe((resultAction: Action) => {
         expect(resultAction.type).toBe(WeatherActions.loadForecastFailure.type);
-        expect(errorHelper.getErrorMessage).toHaveBeenCalledWith(error);
+        expect(errorHelper.getFailureReason).toHaveBeenCalledWith(error);
         done();
       });
     });

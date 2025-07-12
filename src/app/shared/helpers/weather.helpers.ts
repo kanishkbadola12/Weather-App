@@ -32,9 +32,10 @@ function formatTime(date: Date): string {
 }
 
 /**
-Takes the raw forecast API response and transforms it into a structured format
-@param data The raw ForecastApiResponse.
-@returns An array of DayForecast objects, with each object containing the date
+ * Takes the raw forecast API response and transforms it into a structured format
+ * @param forecastResponse The raw ForecastApiResponse.
+ * @returns An array of DayForecast objects, with each object containing the date
+ * and its corresponding list of 3-hourly forecasts.
 */
 function processForecastData(
   forecastResponse: ForecastApiResponse

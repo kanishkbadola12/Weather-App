@@ -34,7 +34,7 @@ describe('WeatherDashboardComponent', () => {
       ],
     },
   ];
-  const initialWeatherState = {
+  const initialMockWeatherState = {
     weather: {
       isLoading: false,
       error: null,
@@ -54,7 +54,7 @@ describe('WeatherDashboardComponent', () => {
       ],
       providers: [
         provideMockStore({
-          initialState: initialWeatherState,
+          initialState: initialMockWeatherState,
         }),
       ],
     }).compileComponents();
@@ -80,6 +80,7 @@ describe('WeatherDashboardComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     const h1Element = compiled.querySelector('h1');
+
     expect(h1Element?.textContent).toContain('5-Day Weather Forecast');
   });
 
@@ -88,7 +89,7 @@ describe('WeatherDashboardComponent', () => {
     const messageElement = fixture.nativeElement.querySelector(
       '.message-container p'
     );
-    
+
     expect(messageElement.textContent).toContain(
       'Traveling between cities? Know what to pack with our forecast.'
     );

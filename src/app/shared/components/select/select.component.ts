@@ -15,9 +15,19 @@ export interface SelectOption {
   styleUrl: './select.component.css',
 })
 export class SelectComponent {
+  /* (Optional) The text for the <label> element associated with the select dropdown. */
   label = input<string | undefined>('');
+
+  /* (Required) The array of options to populate the select dropdown. */
   options = input.required<SelectOption[]>();
+
+  /* (Optional) The currently selected value of the dropdown. */
   selectedValue = input<string | null>(null);
+
+  /** 
+   * An event emitter that fires whenever the user selects a new option,
+   * sending the new value to the parent component.
+   */
   selectionChange = output<string>();
 
   /**
