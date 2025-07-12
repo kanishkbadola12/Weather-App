@@ -19,12 +19,20 @@ export const weatherFeature = createFeature({
   reducer: createReducer(
     initialWeatherState,
 
+    /**
+     * Sets the selected city, starts loading, and resets forecast and error state.
+     */
     on(citySelected, (state, { cityName }) => ({
       ...state,
       selectedCityName: cityName,
       isLoading: true,
+      error: null,
+      forecast: null,
     })),
 
+    /**
+     * Populates forecast data on success and stops loading.
+     */
     on(loadForecastSuccess, (state, { forecast }) => ({
       ...state,
       forecast,
@@ -32,6 +40,9 @@ export const weatherFeature = createFeature({
       error: null
     })),
 
+    /**
+     * Captures the error, stops loading, and clears forecast data.
+     */
     on(loadForecastFailure, (state, { error }) => ({
       ...state,
       forecast: null,
@@ -39,6 +50,9 @@ export const weatherFeature = createFeature({
       error,
     })),
     
+    /**
+     * Resets the weather state to its initial value.
+     */
     on(weatherReset, () => initialWeatherState)
   ),
 });

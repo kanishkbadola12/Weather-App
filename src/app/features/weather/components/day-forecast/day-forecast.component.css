@@ -33,7 +33,7 @@
 
 /* Styling for WebKit browsers (Chrome, Safari, Edge) */
 .hourly-container::-webkit-scrollbar {
-  height: 8px;
+  height: 7px;
   background-color: var(--background-dark);
 }
 

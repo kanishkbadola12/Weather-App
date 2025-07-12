@@ -1,8 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import {
-  SelectComponent,
-  SelectOption,
-} from '@app/shared/components/select/select.component';
+import { SelectComponent } from '@app/shared/components/select/select.component';
 import { Store } from '@ngrx/store';
 import { citySelected, weatherReset } from './store/weather.actions';
 import {
@@ -14,6 +11,7 @@ import {
 import { DayForecastComponent } from './components/day-forecast/day-forecast.component';
 import { LoaderComponent } from '@app/shared/components/loader/loader.component';
 import { MessageComponent } from '@app/shared/components/message/message.component';
+import { CITY_OPTIONS } from './weather.constants';
 
 @Component({
   selector: 'weather-dashboard',
@@ -47,16 +45,8 @@ export class WeatherDashboardComponent {
     () => this.forecast()?.filter((day) => day.hourly?.length > 0) ?? []
   );
 
-  /**
-   * The list of selectable cities for the weather forecast,
-   * including a placeholder for resetting the view.
-   */
-  public cityOptions: SelectOption[] = [
-    { value: '', label: 'Choose a Destination' },
-    { value: 'Birmingham', label: 'Birmingham' },
-    { value: 'London', label: 'London' },
-    { value: 'Cardiff', label: 'Cardiff' },
-  ];
+  /* The list of selectable cities, This includes a placeholder for resetting the view. */
+  public cityOptions = CITY_OPTIONS;
 
   /**
    * Generates a time-sensitive greeting for the initial view.

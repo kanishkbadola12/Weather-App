@@ -13,7 +13,7 @@ export class WeatherEffects {
   private weatherService = inject(WeatherService);
 
   /**
-   * Listens for `citySelected` and dispatches `loadCoordinates`.
+   * Listens for `citySelected` and dispatches `loadCoordinates` action.
    */
   triggerCoordinateLoad$ = createEffect(() =>
     this.actions$.pipe(
@@ -30,7 +30,7 @@ export class WeatherEffects {
    * 2. Fetches coordinates for the city.
    * 3. On success, uses the coordinates to fetch the 5-day forecast.
    * 4. Processes the raw forecast data into a simple format.
-   * 5. Dispatches `loadForecastSuccess` or `loadForecastFailure`.
+   * 5. Dispatches `loadForecastSuccess` or `loadForecastFailure` action.
    */
   loadWeatherForecast$ = createEffect(() =>
     this.actions$.pipe(
@@ -43,26 +43,34 @@ export class WeatherEffects {
                 `Coordinates not found for city: ${action.cityName}`
               );
             }
-
             const { lat, lon } = geoResponse[0];
 
             return this.weatherService.get5DayForecast({ lat, lon }).pipe(
               map((forecastResponse) => {
-                const forecast = weatherHelpers.processForecastData(forecastResponse);
+                const forecast =
+                  weatherHelpers.processForecastData(forecastResponse);
 
                 return WeatherActions.loadForecastSuccess({ forecast });
               }),
-              catchError((forecastError) => 
-                of(WeatherActions.loadForecastFailure({ 
-                  error: `Unable to get weather info. ${errorHelper.getFailureReason(forecastError)}`
-                }))
+              catchError((forecastError) =>
+                of(
+                  WeatherActions.loadForecastFailure({
+                    error: `Unable to get weather info. ${errorHelper.getFailureReason(
+                      forecastError
+                    )}`,
+                  })
+                )
               )
             );
           }),
-          catchError((geoError) => 
-            of(WeatherActions.loadForecastFailure({ 
-              error: `Unable to find location. ${errorHelper.getFailureReason(geoError)}`
-            }))
+          catchError((geoError) =>
+            of(
+              WeatherActions.loadForecastFailure({
+                error: `Unable to find location. ${errorHelper.getFailureReason(
+                  geoError
+                )}`,
+              })
+            )
           )
         )
       )

@@ -8,5 +8,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './loader.component.css',
 })
 export class LoaderComponent {
+  /* (Optional) The name of the city currently being loaded. */
   city = input<string | null>(null);
 }

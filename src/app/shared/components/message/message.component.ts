@@ -24,6 +24,6 @@ export class MessageComponent {
   /** (Optional) The main message or subtitle text. */
   message = input<string>();
 
-  /** (Optional) A final prompt or call to action. */
+  /** (Optional) A prompt or call to action. */
   prompt = input<string>();
 }
